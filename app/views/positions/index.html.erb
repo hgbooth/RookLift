@@ -1,0 +1,190 @@
+<div>
+  <div>
+    <h1>
+      List of all positions
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new position
+    </h2>
+
+    <form action="/insert_position" method="post">
+      <div>
+        <label for="fen_box">
+          Fen
+        </label>
+
+        <input type="text" id="fen_box" name="query_fen">
+      </div>
+
+      <div>
+        <label for="material_count_box">
+          Material count
+        </label>
+
+        <input type="text" id="material_count_box" name="query_material_count">
+      </div>
+
+      <div>
+        <input type="checkbox" id="pawn_present_box" name="query_pawn_present" value="1">
+
+        <label for="pawn_present_box">Pawn present</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="knight_present_box" name="query_knight_present" value="1">
+
+        <label for="knight_present_box">Knight present</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="bishop_present_box" name="query_bishop_present" value="1">
+
+        <label for="bishop_present_box">Bishop present</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="rook_present_box" name="query_rook_present" value="1">
+
+        <label for="rook_present_box">Rook present</label>
+      </div>
+
+      <div>
+        <label for="queen_present_box">
+          Queen present
+        </label>
+
+        <input type="text" id="queen_present_box" name="query_queen_present">
+      </div>
+
+      <div>
+        <label for="bookmarks_count_box">
+          Bookmarks count
+        </label>
+
+        <input type="text" id="bookmarks_count_box" name="query_bookmarks_count">
+      </div>
+
+      <button>
+        Create position
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Fen
+        </th>
+
+        <th>
+          Material count
+        </th>
+
+        <th>
+          Pawn present
+        </th>
+
+        <th>
+          Knight present
+        </th>
+
+        <th>
+          Bishop present
+        </th>
+
+        <th>
+          Rook present
+        </th>
+
+        <th>
+          Queen present
+        </th>
+
+        <th>
+          Bookmarks count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_positions.each do |a_position| %>
+      <tr>
+        <td>
+          <%= a_position.id %>
+        </td>
+
+        <td>
+          <%= a_position.fen %>
+        </td>
+
+        <td>
+          <%= a_position.material_count %>
+        </td>
+
+        <td>
+          <%= a_position.pawn_present %>
+        </td>
+
+        <td>
+          <%= a_position.knight_present %>
+        </td>
+
+        <td>
+          <%= a_position.bishop_present %>
+        </td>
+
+        <td>
+          <%= a_position.rook_present %>
+        </td>
+
+        <td>
+          <%= a_position.queen_present %>
+        </td>
+
+        <td>
+          <%= a_position.bookmarks_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_position.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_position.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/positions/<%= a_position.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

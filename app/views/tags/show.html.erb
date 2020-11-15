@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Tag #<%= @the_tag.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/tags">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_tag/<%= @the_tag.id %>">
+          Delete tag
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Bookmark
+      </dt>
+      <dd>
+        <%= @the_tag.bookmark_id %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_tag.user_id %>
+      </dd>
+
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_tag.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tag.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_tag.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit tag
+    </h2>
+
+    <form action="/modify_tag/<%= @the_tag.id %>"  method="post" >
+      <div>
+        <label for="bookmark_id_box">
+          Bookmark
+        </label>
+
+        <input type="text" id="bookmark_id_box" name="query_bookmark_id" value="<%= @the_tag.bookmark_id %>">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_tag.user_id %>">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_tag.name %>">
+      </div>
+
+      <button>
+        Update tag
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

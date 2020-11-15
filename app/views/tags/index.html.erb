@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all tags
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new tag
+    </h2>
+
+    <form action="/insert_tag" method="post">
+      <div>
+        <label for="bookmark_id_box">
+          Bookmark
+        </label>
+
+        <input type="text" id="bookmark_id_box" name="query_bookmark_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <button>
+        Create tag
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Bookmark
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_tags.each do |a_tag| %>
+      <tr>
+        <td>
+          <%= a_tag.id %>
+        </td>
+
+        <td>
+          <%= a_tag.bookmark_id %>
+        </td>
+
+        <td>
+          <%= a_tag.user_id %>
+        </td>
+
+        <td>
+          <%= a_tag.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_tag.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_tag.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tags/<%= a_tag.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

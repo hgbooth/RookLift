@@ -1,0 +1,30 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  padding-top: 64px;
+  background-color: black;
+}
+
+.navbar-brand {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.who-delivers {
+  background: url("/assets/images/main-hero.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.py6 {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.py2 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.py1 {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}

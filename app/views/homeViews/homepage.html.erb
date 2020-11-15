@@ -1,0 +1,49 @@
+<div id = "buffer" class="py1">
+</div>
+<div class = "container-fluid">
+  <div class = "row">
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center font-weight-bold mb-3">
+      <h1>Endgame trainer</h1>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center">
+      <div class = "text-left mb-3 mt-3">
+        <h5>Use the checkboxes below to select the endgames you want to include in your training set</h5>
+      </div>
+      
+      <form action = "/trainer">
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" id="basic" name = "basic">
+          <label class="form-check-label" for="basic">
+            Basic endgames
+          </label>
+        </div>
+
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" checked = "checked" id="P" name= "P">
+          <label class="form-check-label" for="P">
+            Single pawn
+          </label>
+        </div>
+        
+        <div class="form-check text-left">
+          <input class="form-check-input" type="checkbox" value="" checked = "checked" id="PP" name= "PP">
+          <label class="form-check-label" for="PP">
+            Multiple pawns
+          </label>
+        </div>
+
+        <div class="mb-3">
+        </div>
+
+        <button class="btn btn-secondary btn-block mb-3 font-weight-bold">
+          Train me!
+        </button>
+
+      </form>
+
+
+    </div>
+  </div>
+</div>

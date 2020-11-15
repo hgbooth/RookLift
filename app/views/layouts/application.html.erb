@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FinalProject</title>
-    <%= csrf_meta_tags %>
-
+    <title>ChessGym</title>
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
     <meta charset="utf-8">
-
+    <!-- Connect Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <!-- Connect Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Connect Bootstrap JavaScript and its dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <!-- Make it responsive to small screens -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-
+    <!-- Load google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" 
+      rel="stylesheet">
+    <link href="/assets/darkstyles.css" rel="stylesheet">
   </head>
-
+  
   <body>
+    <nav class="navbar fixed-top navbar-expand-xl navbar-dark bg-dark">
+      <a class="navbar-brand text-white" href="/">
+        <span class="h2 font-weight-bold text-white">RookLift</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white font-weight-bold" href="/">About<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    
     <%= yield %>
   </body>
 </html>
