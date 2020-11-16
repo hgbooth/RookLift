@@ -3,32 +3,17 @@ Rails.application.routes.draw do
   get("/", {controller: "application", action: "homepage"})
 
   # Routes for the Tag resource:
-
-  # CREATE
   post("/insert_tag", { :controller => "tags", :action => "create" })
-          
-  # READ
   get("/tags", { :controller => "tags", :action => "index" })
-  
   get("/tags/:path_id", { :controller => "tags", :action => "show" })
-  
-  # UPDATE
-  
   post("/modify_tag/:path_id", { :controller => "tags", :action => "update" })
-  
-  # DELETE
   get("/delete_tag/:path_id", { :controller => "tags", :action => "destroy" })
 
   #------------------------------
 
   # Routes for the User account:
-
-  # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        
-  # CREATE RECORD
   post("/insert_user", { :controller => "user_authentication", :action => "create"  })
-      
-  # EDIT PROFILE FORM        
   get("/edit_user_profile", { :controller => "user_authentication", :action => "edit_profile_form" })       
   # UPDATE RECORD
   post("/modify_user", { :controller => "user_authentication", :action => "update" })

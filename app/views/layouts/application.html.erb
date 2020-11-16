@@ -41,11 +41,22 @@
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form> %>
 
+        <% if @current_user.present?%>
         <ul class="navbar-nav my-2 my-lg-0">
           <li class="nav-item active">
-            <a class="nav-link text-white font-weight-bold" href="/positions"><%= @current_user.username%><span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white font-weight-bold" href="/edit_user_profile"><%= @current_user.username%><span class="sr-only">(current)</span></a>
           </li>
         </ul>
+
+        <% else %>
+
+        <ul class="navbar-nav my-2 my-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link text-white font-weight-bold" href="/user_sign_in">Sign in / Sign up<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+        <% end %>
 
       </div>
     </nav>
