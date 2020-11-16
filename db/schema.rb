@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_193024) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "pieces"
-    t.string "type"
+    t.string "endgame_type"
   end
 
   create_table "tags", force: :cascade do |t|

@@ -1,28 +1,36 @@
-<div >
-  <h5>
-    Edit User Account
-  </h5>
+<div class = "container-fluid">
 
-  <div>
-    <form action="/modify_user" method="post">
-      <div>
-        <label for="email_box">Email</label>
-        <input id="email_box" name="query_email" value="<%= @current_user.email %>">
-      </div>
-
-      <div>
-        <label for="password_box">Password</label>
-        <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
-      </div>
-    
-      <div>
-        <label for="password_confirmation_box">Password Confirmation</label>
-        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
-      </div>
-
-      <button>
-        Update account
-      </button>
-    </form>
+  <div class = "row">
+    <div class = "col-md-6 offset-3 text-white rounded text-center font-weight-bold mb-3">
+      <h1>User profile</h1>
+    </div>
   </div>
+
+  <div class = "row">
+    <div class = "col-md-6 offset-3 text-white bg-dark rounded pt-2">
+      <form action="/modify_user" method="post">
+            <div class="form-group text-white">
+              <label for="username_box">Username</label>
+              <input class="form-control bg-dark text-white" id="username_box" name="query_username" value="<%= @current_user.username %>" type="text">
+            </div>
+            <div class="form-group text-white">
+              <label for="email_box">Email</label>
+              <input class="form-control bg-dark text-white" id="email_box" name="query_email" value="<%= @current_user.email %>" placeholder="Choose a email..." type="email">
+            </div>
+            <div class="form-group text-white">
+              <label for="password_box">Password</label>
+              <input class="form-control bg-dark text-white" id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+            </div>
+            <div class="form-group text-white">
+              <label for="password_confirmation_box">Password Confirmation</label>
+              <input class="form-control bg-dark text-white" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Update account</button>
+      </form>
+
+    </div>
+  </div>
+
+  <hr>
+
 </div>

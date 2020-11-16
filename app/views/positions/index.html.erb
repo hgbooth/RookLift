@@ -5,34 +5,31 @@
     </h1>
   </div>
 </div>
-
 <hr>
-
 <div class = "row">
   <div class = "col-md-6 offset-3 text-white bg-dark rounded">
-      <div class = "text-left mb-3 mt-3">
-        <h4>Add a new position</h4>
-      </div>
-
-      <form action="/insert_position" method="post">
+    <div class = "text-left mb-3 mt-3">
+      <h4>Add a new position</h4>
+    </div>
+    
+    <form action="/insert_position" method="post">
       <div class="form-group text-white">
         <label for="fen_box">FEN</label>
-        <input type="text" class="form-control bg-dark text-white" id="fen_box" placeholder="Paste FEN">
+        <input type="text" class="form-control bg-dark text-white" id="fen_box" name="query_fen" placeholder="Paste FEN">
       </div>
       <div class="form-group text-white">
         <label for="type_input">Endgame type</label>
-        <select class="form-control bg-dark text-white" id="type_input">
+        <select class="form-control bg-dark text-white" id="type_input" name="query_endgame_type">
           <option>Elementary</option>
           <option>Practical</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary mb-3">Create position</button>
     </form>
+
   </div>
 </div>
-
 <hr>
-
 <div class="container-fluid">
   <div>
     <table class="table table-dark">

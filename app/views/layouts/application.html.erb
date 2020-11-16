@@ -64,11 +64,11 @@
     <div id = "buffer" class="py1"></div>
 
     <% if notice.present? %>
-      <div class="offset-1 alert alert-success" role="alert"><%= notice %></div>
+      <div class="col-md-10 offset-1 alert alert-success" role="alert"><%= notice %></div>
     <% end %>
 
     <% if alert.present?%>
-      <div class="offset-1 alert alert-danger" role="alert"><%= alert %></div>
+      <div class="col-md-10 offset-1 alert alert-danger" role="alert"><%= alert %></div>
     <% end %>
     
     <%= yield %>

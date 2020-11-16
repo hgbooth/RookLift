@@ -16,17 +16,17 @@ class PositionsController < ApplicationController
 
     render({ :template => "positions/show.html.erb" })
   end
+  
+  def 
 
   def create
     the_position = Position.new
-    the_position.fen = params.fetch("query_fen")
-    the_position.material_count = params.fetch("query_material_count")
-    the_position.pawn_present = params.fetch("query_pawn_present", false)
-    the_position.knight_present = params.fetch("query_knight_present", false)
-    the_position.bishop_present = params.fetch("query_bishop_present", false)
-    the_position.rook_present = params.fetch("query_rook_present", false)
-    the_position.queen_present = params.fetch("query_queen_present")
-    the_position.bookmarks_count = params.fetch("query_bookmarks_count")
+    the_position.fen = params.fetch("query_fen").trim
+    the_position.endgame_type = params.fetch("query_endgame_type")
+
+
+
+    the_position.bookmarks_count = 0
 
     if the_position.valid?
       the_position.save
