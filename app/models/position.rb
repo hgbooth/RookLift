@@ -12,6 +12,7 @@
 #  pieces          :string
 #  queen_present   :string
 #  rook_present    :boolean
+#  type            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
