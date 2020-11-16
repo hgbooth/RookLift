@@ -1,29 +1,38 @@
-<h1>Sign up</h1>
+<div class = "container-fluid">
 
-<form action="/insert_user" method="post">
-
-  <div>
-    <label for="email_box">Email</label>
-    <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
-  </div>
-            
-  <div>
-    <label for="password_box">Password</label>
-    <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+  <div class = "row">
+    <div class = "col-md-6 offset-3 text-white rounded text-center font-weight-bold mb-3">
+      <h1>Sign up</h1>
+    </div>
   </div>
 
-  <div>
-    <label for="password_confirmation_box">Password Confirmation</label>
-    <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+  <div class = "row">
+    <div class = "col-md-6 offset-3 text-white bg-dark rounded pt-2">
+      <form action="/insert_user" method="post">
+            <div class="form-group text-white">
+              <label for="username_box">Username</label>
+              <input class="form-control bg-dark text-white" id="username_box" name="query_username" placeholder="Choose a username..." type="text">
+            </div>
+            <div class="form-group text-white">
+              <label for="email_box">Email</label>
+              <input class="form-control bg-dark text-white" id="email_box" name="query_email" placeholder="Choose a email..." type="email">
+            </div>
+            <div class="form-group text-white">
+              <label for="password_box">Password</label>
+              <input class="form-control bg-dark text-white" id="password_box" name="query_password" placeholder="Choose a password..." type="password">
+            </div>
+            <div class="form-group text-white">
+              <label for="password_confirmation_box">Password Confirmation</label>
+              <input class="form-control bg-dark text-white" id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Sign up</button>
+      </form>
+
+    </div>
   </div>
 
-  <button>
-    Sign up
-  </button>
-</form>
+  <hr>
 
-<hr>
+  <div class="col-md-6 offset-3 text-white">Or, <a href="/user_sign_in">Sign in</a> instead.</div>
 
-<p>
-  Or, <a href="/user_sign_in">Sign in</a> instead.
-</p>
+</div>
