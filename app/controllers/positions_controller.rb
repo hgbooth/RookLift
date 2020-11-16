@@ -17,14 +17,10 @@ class PositionsController < ApplicationController
     render({ :template => "positions/show.html.erb" })
   end
   
-  def 
-
   def create
     the_position = Position.new
-    the_position.fen = params.fetch("query_fen").trim
+    the_position.fen = params.fetch("query_fen").strip
     the_position.endgame_type = params.fetch("query_endgame_type")
-
-
 
     the_position.bookmarks_count = 0
 
@@ -32,7 +28,7 @@ class PositionsController < ApplicationController
       the_position.save
       redirect_to("/positions", { :notice => "Position created successfully." })
     else
-      redirect_to("/positions", { :notice => "Position failed to create successfully." })
+      redirect_to("/positions", { :alert => the_position.errors.full_messages.to_sentence })
     end
   end
 
