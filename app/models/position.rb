@@ -9,6 +9,7 @@
 #  knight_present  :boolean
 #  material_count  :integer
 #  pawn_present    :boolean
+#  pieces          :string
 #  queen_present   :string
 #  rook_present    :boolean
 #  created_at      :datetime         not null
