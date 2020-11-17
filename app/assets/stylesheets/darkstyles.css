@@ -29,10 +29,33 @@ body {
   padding-bottom: 25px;
 }
 
-.square{
-    /* width: 300px;
-    height: 300px */
+.bigsquare{
+    /* width: 320px;
+    height: 320px */
 
     width: 100%;
-    padding-bottom: 100%; /* = width for a square aspect ratio */
+    padding-bottom: 100%; 
+  }
+
+table.chessboard {
+    margin: 80px auto;
+    background: #F5DEB3;
+    /* border: 25px solid #333;
+    border-collapse: collapse;  */
+
+    width: 100%;
+    padding-bottom: 100%; 
+}
+td.chessboard {
+    width: 70px; 
+    height: 70px;
+    /* border: 2px solid #d2a479;  */
+
+    /* width: 12.5%;
+    height: 12.5%; */
+}
+
+tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
+tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
+    background: #996633;
 }
