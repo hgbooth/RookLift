@@ -1,176 +1,73 @@
-<div>
-  <div>
-    <h1>
-      Position #<%= @the_position.id %> details
-    </h1>
+<div class="container-fluid">
 
+  <div>
     <div>
-      <div>
-        <a href="/positions">
-          Go back
-        </a>
+      <h1 class="text-white text-center">
+        Position details
+      </h1>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class = "row">
+    
+    <!-- table of info about the fen -->
+    <div class = "col-md-5 offset-1 text-white bg-dark rounded">
+      <div class = "text-left mb-3 mt-3">
+        <div>
+          <div><a href="/positions">Go back</a></div>
+
+          <!--<div>
+            <a href="/delete_position/<%= @the_position.id %>">
+              Delete position
+            </a>
+          </div> -->
+        </div>
       </div>
 
-      <div>
-        <a href="/delete_position/<%= @the_position.id %>">
-          Delete position
-        </a>
+      <table class="table table-striped table-dark mt-3">
+        <tbody>
+          <tr>
+            <td>FEN</td>
+            <td><%= @the_position.fen %></td>
+          </tr>
+          <tr>
+            <td>Endgame type</td>
+            <td><%= @the_position.endgame_type %></td>
+          </tr>
+          <tr>
+            <td>Pieces</td>
+            <td><%= @the_position.pieces %></td>
+          </tr>
+          <tr>
+            <td>Material count</td>
+            <td><%= @the_position.material_count %></td>
+          </tr>
+          <tr>
+            <td>Created at</td>
+            <td><%= time_ago_in_words(@the_position.created_at) %> ago</td>
+          </tr>
+          <tr>
+            <td>Updated at</td>
+            <td><%= time_ago_in_words(@the_position.updated_at) %> ago</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+
+    <div class="col-md-4 offset-1">
+      <div class="square bg-danger">
+
       </div>
     </div>
 
-    <dl>
-      <dt>
-        Fen
-      </dt>
-      <dd>
-        <%= @the_position.fen %>
-      </dd>
-
-      <dt>
-        Material count
-      </dt>
-      <dd>
-        <%= @the_position.material_count %>
-      </dd>
-
-      <dt>
-        Pawn present
-      </dt>
-      <dd>
-        <%= @the_position.pawn_present %>
-      </dd>
-
-      <dt>
-        Knight present
-      </dt>
-      <dd>
-        <%= @the_position.knight_present %>
-      </dd>
-
-      <dt>
-        Bishop present
-      </dt>
-      <dd>
-        <%= @the_position.bishop_present %>
-      </dd>
-
-      <dt>
-        Rook present
-      </dt>
-      <dd>
-        <%= @the_position.rook_present %>
-      </dd>
-
-      <dt>
-        Queen present
-      </dt>
-      <dd>
-        <%= @the_position.queen_present %>
-      </dd>
-
-      <dt>
-        Bookmarks count
-      </dt>
-      <dd>
-        <%= @the_position.bookmarks_count %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_position.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_position.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
+
+  <hr>
+
+
+
 </div>
-
-<hr>
-
-
-<div>
-  <div>
-    <h2>
-      Edit position
-    </h2>
-
-    <form action="/modify_position/<%= @the_position.id %>"  method="post" >
-      <div>
-        <label for="fen_box">
-          Fen
-        </label>
-
-        <input type="text" id="fen_box" name="query_fen" value="<%= @the_position.fen %>">
-      </div>
-
-      <div>
-        <label for="material_count_box">
-          Material count
-        </label>
-
-        <input type="text" id="material_count_box" name="query_material_count" value="<%= @the_position.material_count %>">
-      </div>
-
-      <div>
-        <input type="checkbox" id="pawn_present_box" name="query_pawn_present" value="1" <%= "checked" if @the_position.pawn_present %>>
-
-        <label for="pawn_present_box">
-            Pawn present
-        </label>
-      </div>
-
-      <div>
-        <input type="checkbox" id="knight_present_box" name="query_knight_present" value="1" <%= "checked" if @the_position.knight_present %>>
-
-        <label for="knight_present_box">
-            Knight present
-        </label>
-      </div>
-
-      <div>
-        <input type="checkbox" id="bishop_present_box" name="query_bishop_present" value="1" <%= "checked" if @the_position.bishop_present %>>
-
-        <label for="bishop_present_box">
-            Bishop present
-        </label>
-      </div>
-
-      <div>
-        <input type="checkbox" id="rook_present_box" name="query_rook_present" value="1" <%= "checked" if @the_position.rook_present %>>
-
-        <label for="rook_present_box">
-            Rook present
-        </label>
-      </div>
-
-      <div>
-        <label for="queen_present_box">
-          Queen present
-        </label>
-
-        <input type="text" id="queen_present_box" name="query_queen_present" value="<%= @the_position.queen_present %>">
-      </div>
-
-      <div>
-        <label for="bookmarks_count_box">
-          Bookmarks count
-        </label>
-
-        <input type="text" id="bookmarks_count_box" name="query_bookmarks_count" value="<%= @the_position.bookmarks_count %>">
-      </div>
-
-      <button>
-        Update position
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
