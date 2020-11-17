@@ -59,3 +59,14 @@ tr.chessboard:nth-child(odd) td.chessboard:nth-child(even),
 tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
     background: #996633;
 }
+
+.rook {
+  /* src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png"; */
+
+  position: relative;
+  top: 0px;
+  left: 0px;
+  
+  width: 70px;
+  height: 70px;
+}
