@@ -29,7 +29,7 @@ class BookmarksController < ApplicationController
       the_bookmark.save
       redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
     else
-      redirect_to("/bookmarks", { :notice => "Bookmark failed to create successfully." })
+      redirect_to("/bookmarks", { :alert => the_bookmark.errors.full_messages.to_sentence })
     end
   end
 

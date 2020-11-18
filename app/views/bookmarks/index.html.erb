@@ -37,24 +37,20 @@
     <table class="table table-striped table-dark">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Position</th>
-          <th scope="col">User</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Created at</th>
-          <th scope="col">Updated at</th>
+          <th scope="col">FEN</th>
+          <th scope="col">Pieces</th>
+          <th scope="col">Bookmarked at</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <% @list_of_bookmarks.each do |a_bookmark| %>
           <tr>
-            <th scop="row"><%= a_bookmark.id %></th>
-            <td><%= a_bookmark.position_id %></td>
-            <td><%= a_bookmark.user_id %></td>
-            <td><%= a_bookmark.tag_id %></td>
+            <td><%= a_bookmark.position.fen %></td>
+            <td><%= a_bookmark.position.pieces %></td>
+
             <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
-            <td><%= time_ago_in_words(a_bookmark.updated_at) %> ago</td>
-            <td><a href="/bookmarks/<%= a_bookmark.id %>">Show details</a></td>
+            <td><a href="/positions/<%= a_bookmark.position.id %>"><button class="btn btn-success">Show details</button></a></td>
           </tr>
         <% end %>
       </tbody>
