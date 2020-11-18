@@ -38,7 +38,7 @@ body {
   }
 
 table.chessboard {
-    margin: 80px auto;
+    /* margin: 80px auto; */
     background: #F5DEB3;
     /* border: 25px solid #333;
     border-collapse: collapse;  */

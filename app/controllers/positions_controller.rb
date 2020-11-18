@@ -64,6 +64,12 @@ class PositionsController < ApplicationController
     if piece == "q"
       return(bQueen)
     end
+    if piece == "R"
+      return(wRook)
+    end
+    if piece == "r"
+      return(bRook)
+    end
     if piece == "B"
       return(wBishop)
     end
@@ -96,10 +102,12 @@ class PositionsController < ApplicationController
     @the_board = parseFen(@the_position.fen)
 
     @url = pieceToImg(@the_board[0][3])
-
+    
+    @the_images = []
     (0..7).each do |i|
+      @the_images = @the_images.push([])
       (0..7).each do |j|
-        @the_board[i][j] = pieceToImg(@the_board[i][j])
+        @the_images[i] = @the_images[i].push(pieceToImg(@the_board[i][j]))
       end
     end
 
