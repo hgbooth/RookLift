@@ -65,10 +65,10 @@
           <% (0..7).each do |j| %>
             <td class="chessboard">
               <%# if rook render rook, etc. %>
-              <% if @the_board[i][j] == "r" %>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png" class="piece">
+              <% if @the_board[i][j] != "blank" %>
+                <img src="<%= @the_board[i][j] %>" class="piece">
               <% end %>
-            
+                          
             </td>
           <% end %>
         <% end %>
