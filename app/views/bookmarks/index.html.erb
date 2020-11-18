@@ -1,13 +1,13 @@
 <div>
   <div>
     <h1 class="text-white">
-      List of all bookmarks
+      My bookmarked positions
     </h1>
   </div>
 </div>
 <hr>
 
-<div>
+<%# <div>
   <div>
     <h2 class="text-white">
       Add a new bookmark
@@ -29,7 +29,32 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
+</div> %>
+
+<div class = "row">
+  <div class = "col-md-6 offset-3 text-white bg-dark rounded">
+    <div class = "text-left mb-3 mt-3">
+      <h4>Add a new bookmarked position</h4>
+    </div>
+    
+    <form action="/insert_bookmark" method="post">
+      <div class="form-group text-white">
+        <label for="fen_box">FEN</label>
+        <input type="text" class="form-control bg-dark text-white" id="fen_box" name="query_fen" placeholder="Paste FEN">
+      </div>
+      <div class="form-group text-white">
+        <label for="type_input">Endgame type</label>
+        <select class="form-control bg-dark text-white" id="type_input" name="query_endgame_type">
+          <option>Elementary</option>
+          <option>Practical</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Create bookmarked position</button>
+    </form>
+
+  </div>
 </div>
+
 <hr>
 
 <div>

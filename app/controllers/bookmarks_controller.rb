@@ -20,10 +20,90 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    the_position = Position.new
+
+        the_position.fen = params.fetch("query_fen").strip
+    the_position.endgame_type = params.fetch("query_endgame_type")
+
+    pos = the_position.fen.split(" ")[0]
+
+    wPawns = countPiece(pos, "P")
+    wBishops = countPiece(pos, "B")
+    wKnights = countPiece(pos, "N")
+    wRooks = countPiece(pos, "R")
+    wQueens = countPiece(pos, "Q")
+    
+    bPawns = countPiece(pos, "p")
+    bBishops = countPiece(pos, "b")
+    bKnights = countPiece(pos, "n")
+    bRooks = countPiece(pos, "r")
+    bQueens = countPiece(pos, "q")
+
+    numPawns = wPawns + bPawns
+    numBishops = wBishops + bBishops
+    numKnights = wKnights + bKnights
+    numRooks = wRooks + bRooks
+    numQueens = wQueens + bQueens
+
+    totalMaterial = numPawns + 3*numBishops + 3*numKnights + 5*numRooks + 9*numQueens
+
+    the_position.material_count = totalMaterial
+    the_position.pawn_present = numPawns > 0
+    the_position.bishop_present = numBishops > 0
+    the_position.knight_present = numKnights > 0
+    the_position.rook_present = numRooks > 0
+    the_position.queen_present = numQueens > 0
+
+    the_position.bookmarks_count = 0
+
+    pieces = "K"
+    wQueens.times do
+      pieces = pieces + "Q"      
+    end
+    wRooks.times do
+      pieces = pieces + "R"      
+    end
+    wBishops.times do
+      pieces = pieces + "B"      
+    end
+    wKnights.times do
+      pieces = pieces + "N"      
+    end
+    wPawns.times do
+      pieces = pieces + "P"      
+    end
+
+    pieces = pieces + " v K"
+
+    bQueens.times do
+      pieces = pieces + "Q"      
+    end
+    bRooks.times do
+      pieces = pieces + "R"      
+    end
+    bBishops.times do
+      pieces = pieces + "B"      
+    end
+    bKnights.times do
+      pieces = pieces + "N"      
+    end
+    bPawns.times do
+      pieces = pieces + "P"      
+    end
+
+    the_position.pieces = pieces 
+
+    if the_position.valid?
+      the_position.save
+    else
+      redirect_to("/bookmarks", { :alert => the_position.errors.full_messages.to_sentence })
+    end
+
+    
     the_bookmark = Bookmark.new
-    the_bookmark.position_id = params.fetch("query_position_id")
-    the_bookmark.user_id = params.fetch("query_user_id")
-    the_bookmark.tag_id = params.fetch("query_tag_id")
+    the_bookmark.position_id = the_position.id
+    the_bookmark.user_id = params.fetch(@current_user.id)
+    the_bookmark.tag_id = 0
 
     if the_bookmark.valid?
       the_bookmark.save
