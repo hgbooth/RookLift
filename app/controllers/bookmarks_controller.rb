@@ -2,7 +2,9 @@ class BookmarksController < ApplicationController
   def index
     matching_bookmarks = Bookmark.all
 
-    @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
+    # @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
+    @list_of_bookmarks = @current_user.bookmarks.all.order({ :created_at => :desc })
+
 
     render({ :template => "bookmarks/index.html.erb" })
   end
