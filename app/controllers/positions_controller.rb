@@ -7,12 +7,15 @@ class PositionsController < ApplicationController
     render({ :template => "positions/index.html.erb" })
   end
 
+  
+
   def show
     the_id = params.fetch("path_id")
 
     matching_positions = Position.where({ :id => the_id })
 
     @the_position = matching_positions.at(0)
+    @the_board = parseFen(@the_position.fen)
 
     render({ :template => "positions/show.html.erb" })
   end

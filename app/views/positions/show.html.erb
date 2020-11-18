@@ -60,87 +60,21 @@
 
     <div class="col-md-4 offset-1">
       <table class="chessboard">
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png" class="rook"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        <tr class="chessboard">
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-            <td class="chessboard"></td>
-        </tr>
-        </table>
+        <% (0..7).each do |i| %>
+          <tr class="chessboard">
+          <% (0..7).each do |j| %>
+            <td class="chessboard">
+              <%# if rook render rook, etc. %>
+              <% if @the_board[i][j] == "r" %>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png" class="piece">
+              <% end %>
+            
+            </td>
+          <% end %>
+        <% end %>
+
+
+      </table>
     </div>
   </div>
 

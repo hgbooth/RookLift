@@ -21,5 +21,41 @@ class ApplicationController < ActionController::Base
     render({template: "/homeViews/homepage.html.erb"})  
   end
 
+  # Reads a FEN, and returns a matrix of whether each of the 64 squares are blank or which piece is there
+  def parseFen(fen)
+    splitFen = fen.split(" ") # ["7B/8/8/8/K1k5/8/8/7N", "w", "-", "-", "0", "1"]
+    pos = splitFen[0]
+    ranks = pos.split("/")
+
+    curRow = []
+    res = []
+
+    ranks.each do |rank|
+      curRow = []
+      
+      splitRank = rank.split("")
+      splitRank.each do |c|
+        if c.to_i.to_s == c
+          c.to_i.times do 
+            curRow = curRow.push("blank") 
+          end
+        else
+          curRow = curRow.push(c)
+        end
+
+      end
+      
+      res = res.push(curRow)
+    end
+
+    return(res)
+  end
+
+  def pieceToImg(piece)
+    
+
+  end
+
+
 
 end

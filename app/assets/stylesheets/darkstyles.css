@@ -60,7 +60,7 @@ tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
     background: #996633;
 }
 
-.rook {
+.piece {
   /* src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png"; */
 
   position: relative;
