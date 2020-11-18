@@ -1,12 +1,35 @@
 <div>
   <div>
-    <h1>
+    <h1 class="text-white">
       List of all tags
     </h1>
   </div>
 </div>
 
 <hr>
+<div>
+  <div>
+    <h2 class="text-white">
+      Add a new tag
+    </h2>
+
+    <form action="/insert_tag" method="post">
+      <div class="form-group text-white">
+        <label for="bookmark_id_box">Bookmark</label>
+        <input type="text" class="form-control bg-dark text-white" id="position_id_box" placeholder="Enter position id">
+      </div>
+      <div class="form-group text-white">
+        <label for="user_id_box">User</label>
+        <input type="text" class="form-control bg-dark text-white" id="user_id_box" placeholder="Enter user id">
+      </div>
+      <div class="form-group text-white">
+        <label for="tag_id_box">Name</label>
+        <input type="text" class="form-control bg-dark text-white" id="tag_id_box" placeholder="Enter tag id">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
 
 <div>
   <div>
