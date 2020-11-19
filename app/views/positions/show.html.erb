@@ -54,8 +54,12 @@
           </tr>
         </tbody>
       </table>
-
-
+      <form action="/insert_bookmark" method="post">
+        <input type="hidden" id="position_box" name="query_position_id" value="<%= @the_position.id %>">
+        <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
+        <input type="hidden" id="tag_box" name="query_tag_id" value="0">             
+        <button type="submit" class="btn btn-primary mb-3">Bookmark position</button>
+      </form>
     </div>
 
     <div class="col-md-4 offset-1">
