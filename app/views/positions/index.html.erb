@@ -60,12 +60,21 @@
           <td><%= time_ago_in_words(a_position.updated_at)%> ago</td> -->
 
           <td>
+            <% if Bookmark.where({position_id: a_position.id}).count() == 0 %>
             <form action="/insert_bookmark" method="post">
               <input type="hidden" id="position_box" name="query_position_id" value="<%= a_position.id %>">
               <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
               <input type="hidden" id="tag_box" name="query_tag_id" value="Untagged">             
               <button type="submit" class="btn btn-primary mb-3">Bookmark position</button>
             </form>
+            <% else %>
+            <form action="/insert_bookmark" method="post">
+              <input type="hidden" id="position_box" name="query_position_id" value="<%= a_position.id %>">
+              <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
+              <input type="hidden" id="tag_box" name="query_tag_id" value="Untagged">             
+              <button type="submit" class="btn btn-outline-primary mb-3" disabled>Position bookmarked</button>
+            </form>
+            <% end %>
           </td>
           <td><a href="/positions/<%= a_position.id %>"><button class="btn btn-success">Show details</button></a></td>
         </tr>

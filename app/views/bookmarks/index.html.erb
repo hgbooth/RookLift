@@ -68,6 +68,7 @@
           <th scope="col">Pieces</th>
           <th scope="col">Bookmarked at</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -78,6 +79,7 @@
 
             <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
             <td><a href="/bookmarks/<%= a_bookmark.id %>"><button class="btn btn-success">Show details</button></a></td>
+            <td><a href="/delete_bookmark/<%= a_bookmark.id %>"><button class="btn btn-danger">Delete bookmark</button></a></td>
           </tr>
         <% end %>
       </tbody>

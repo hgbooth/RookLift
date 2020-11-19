@@ -36,7 +36,7 @@ class BookmarksController < ApplicationController
     fenInput = params.fetch("query_fen").strip
     typeInput = params.fetch("query_endgame_type")
 
-    if Position.where({fen: fenInput, endgame_type: typeInput}).first == nil
+    if Position.where({fen: fenInput, endgame_type: typeInput}).count() == 0
 
     the_position = Position.new
     the_position.fen = params.fetch("query_fen").strip
