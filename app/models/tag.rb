@@ -11,6 +11,10 @@
 #
 class Tag < ApplicationRecord
 
+  validates :name, :uniqueness => { :scope => [:bookmark_id] }
+  validates :name, :presence => true
+
   belongs_to(:user, { required: false, class_name: "User", foreign_key: "user_id" })
   has_many(:bookmarks, { class_name: "Bookmark", foreign_key: "tag_id", dependent: :destroy })
+  belongs_to(:bookmark, { required: false, class_name: "Bookmark", foreign_key: "bookmark_id" })
 end
