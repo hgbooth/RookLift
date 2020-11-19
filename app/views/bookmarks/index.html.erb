@@ -1,6 +1,8 @@
+<div class="container-fluid">
+
 <div>
   <div>
-    <h1 class="text-white">
+    <h1 class="text-white text-center">
       My bookmarked positions
     </h1>
   </div>
@@ -75,7 +77,7 @@
             <td><%= a_bookmark.position.pieces %></td>
 
             <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
-            <td><a href="/positions/<%= a_bookmark.position.id %>"><button class="btn btn-success">Show details</button></a></td>
+            <td><a href="/bookmarks/<%= a_bookmark.id %>"><button class="btn btn-success">Show details</button></a></td>
           </tr>
         <% end %>
       </tbody>
@@ -83,3 +85,5 @@
   </div>
 </div>
 <hr>
+
+</div>

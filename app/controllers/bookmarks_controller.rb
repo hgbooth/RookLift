@@ -11,10 +11,22 @@ class BookmarksController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
+    the_id = Bookmark.where({ :id => the_id }).first.position_id
 
-    matching_bookmarks = Bookmark.where({ :id => the_id })
+    matching_positions = Position.where({ :id => the_id })
 
-    @the_bookmark = matching_bookmarks.at(0)
+    @the_position = matching_positions.at(0)
+    @the_board = parseFen(@the_position.fen)
+
+    @url = pieceToImg(@the_board[0][3])
+    
+    @the_images = []
+    (0..7).each do |i|
+      @the_images = @the_images.push([])
+      (0..7).each do |j|
+        @the_images[i] = @the_images[i].push(pieceToImg(@the_board[i][j]))
+      end
+    end
 
     render({ :template => "bookmarks/show.html.erb" })
   end
