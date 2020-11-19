@@ -114,12 +114,7 @@ class PositionsController < ApplicationController
     render({ :template => "positions/show.html.erb" })
   end
   
-  def countPiece(position, pieceChar)
-    res = 0
-    splitPos = position.split("")
-    res = splitPos.count(pieceChar)
-    return res
-  end
+
 
   def create
     the_position = Position.new

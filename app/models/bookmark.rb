@@ -12,6 +12,8 @@
 class Bookmark < ApplicationRecord
   
   validates :position_id, :uniqueness => { :case_sensitive => false }
+  validates :position_id, :presence => true
+  validates :user_id, :presence => true
   
   belongs_to(:position, { required: false, class_name: "Position", foreign_key: "position_id", counter_cache: true })
   belongs_to(:user, { required: false, class_name: "User", foreign_key: "user_id" })

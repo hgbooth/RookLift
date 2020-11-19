@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
     render({template: "/homeViews/homepage.html.erb"})  
   end
 
+  def countPiece(position, pieceChar)
+    res = 0
+    splitPos = position.split("")
+    res = splitPos.count(pieceChar)
+    return res
+  end
  
 
   

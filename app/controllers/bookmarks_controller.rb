@@ -18,11 +18,16 @@ class BookmarksController < ApplicationController
 
     render({ :template => "bookmarks/show.html.erb" })
   end
+  
+  def create_from_fen
+    
+    fenInput = params.fetch("query_fen").strip
+    typeInput = params.fetch("query_endgame_type")
 
-  def create
+    if Position.where({fen: fenInput, endgame_type: typeInput}).first == nil
+
     the_position = Position.new
-
-        the_position.fen = params.fetch("query_fen").strip
+    the_position.fen = params.fetch("query_fen").strip
     the_position.endgame_type = params.fetch("query_endgame_type")
 
     pos = the_position.fen.split(" ")[0]
@@ -95,15 +100,45 @@ class BookmarksController < ApplicationController
 
     if the_position.valid?
       the_position.save
+      the_bookmark = Bookmark.new
+      the_bookmark.position_id = the_position.id
+      the_bookmark.user_id = @current_user.id
+      the_bookmark.tag_id = 0
+
+      if the_bookmark.valid?
+        the_bookmark.save
+        redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
+      else
+        redirect_to("/bookmarks", { :alert => the_bookmark.errors.full_messages.to_sentence })
+      end
+
     else
       redirect_to("/bookmarks", { :alert => the_position.errors.full_messages.to_sentence })
     end
+     
+    else
+      the_position = Position.where({fen: fenInput, endgame_type: typeInput}).first
+      
+      the_bookmark = Bookmark.new
+      the_bookmark.position_id = the_position.id
+      the_bookmark.user_id = @current_user.id
+      the_bookmark.tag_id = 0
 
-    
+      if the_bookmark.valid?
+        the_bookmark.save
+        redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
+      else
+        redirect_to("/bookmarks", { :alert => the_bookmark.errors.full_messages.to_sentence })
+      end
+
+    end
+  end
+
+  def create
     the_bookmark = Bookmark.new
-    the_bookmark.position_id = the_position.id
-    the_bookmark.user_id = params.fetch(@current_user.id)
-    the_bookmark.tag_id = 0
+    the_bookmark.position_id = params.fetch("query_position_id")
+    the_bookmark.user_id = params.fetch("query_user_id")
+    the_bookmark.tag_id = params.fetch("query_tag_id")
 
     if the_bookmark.valid?
       the_bookmark.save
