@@ -1,105 +1,105 @@
 <div class="container-fluid">
 
-<div>
   <div>
-    <h1 class="text-white text-center">
-      My bookmarked positions
-    </h1>
-  </div>
-</div>
-<hr>
-
-<%# <div>
-  <div>
-    <h2 class="text-white">
-      Add a new bookmark
-    </h2>
-
-    <form action="/insert_bookmark" method="post">
-      <div class="form-group text-white">
-        <label for="position_id_box">Position</label>
-        <input type="text" class="form-control bg-dark text-white" id="position_id_box" placeholder="Enter position id">
-      </div>
-      <div class="form-group text-white">
-        <label for="user_id_box">User</label>
-        <input type="text" class="form-control bg-dark text-white" id="user_id_box" placeholder="Enter user id">
-      </div>
-      <div class="form-group text-white">
-        <label for="tag_id_box">tag</label>
-        <input type="text" class="form-control bg-dark text-white" id="tag_id_box" placeholder="Enter tag id">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-</div> %>
-
-<div class = "row">
-  <div class = "col-md-6 offset-3 text-white bg-dark rounded">
-    <div class = "text-left mb-3 mt-3">
-      <h4>Add a new bookmarked position</h4>
+    <div>
+      <h1 class="text-white text-center">
+        My bookmarked positions
+      </h1>
     </div>
-    
-    <form action="/insert_bookmark_from_fen" method="post">
-      <div class="form-group text-white">
-        <label for="fen_box">FEN</label>
-        <input type="text" class="form-control bg-dark text-white" id="fen_box" name="query_fen" placeholder="Paste FEN">
-      </div>
-      <div class="form-group text-white">
-        <label for="type_input">Endgame type</label>
-        <select class="form-control bg-dark text-white" id="type_input" name="query_endgame_type">
-          <option>Elementary</option>
-          <option>Practical</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary mb-3">Create bookmarked position</button>
-    </form>
-
   </div>
-</div>
+  <hr>
 
-<hr>
+  <%# <div>
+    <div>
+      <h2 class="text-white">
+        Add a new bookmark
+      </h2>
 
-<div>
+      <form action="/insert_bookmark" method="post">
+        <div class="form-group text-white">
+          <label for="position_id_box">Position</label>
+          <input type="text" class="form-control bg-dark text-white" id="position_id_box" placeholder="Enter position id">
+        </div>
+        <div class="form-group text-white">
+          <label for="user_id_box">User</label>
+          <input type="text" class="form-control bg-dark text-white" id="user_id_box" placeholder="Enter user id">
+        </div>
+        <div class="form-group text-white">
+          <label for="tag_id_box">tag</label>
+          <input type="text" class="form-control bg-dark text-white" id="tag_id_box" placeholder="Enter tag id">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div> %>
+
+  <div class = "row">
+    <div class = "col-md-6 offset-3 text-white bg-dark rounded">
+      <div class = "text-left mb-3 mt-3">
+        <h4>Add a new bookmarked position</h4>
+      </div>
+      
+      <form action="/insert_bookmark_from_fen" method="post">
+        <div class="form-group text-white">
+          <label for="fen_box">FEN</label>
+          <input type="text" class="form-control bg-dark text-white" id="fen_box" name="query_fen" placeholder="Paste FEN">
+        </div>
+        <div class="form-group text-white">
+          <label for="type_input">Endgame type</label>
+          <select class="form-control bg-dark text-white" id="type_input" name="query_endgame_type">
+            <option>Elementary</option>
+            <option>Practical</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Create bookmarked position</button>
+      </form>
+
+    </div>
+  </div>
+
+  <hr>
+
   <div>
-    <table class="table table-striped table-dark">
-      <thead>
-        <tr>
-          <th scope="col">FEN</th>
-          <th scope="col">Pieces</th>
-          <th scope="col">Bookmarked at</th>
-          <th scope="col">Tags</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @list_of_bookmarks.each do |a_bookmark| %>
+    <div>
+      <table class="table table-striped table-dark">
+        <thead>
           <tr>
-            <td><%= a_bookmark.position.fen %></td>
-            <td><%= a_bookmark.position.pieces %></td>
-            <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td>
-            <td>
-              <% a_bookmark.tags.each do |a_tag| %>
-                <a href="/tags/<%= a_tag.id %>" class="badge badge-pill badge-light"><%= a_tag.name %></span>
-              <% end %>
-            </td>
-            <td>
-            <form class="form-inline" action="/insert_tag" method="post">
-              <input type="hidden" id="bookmark_box" name="query_bookmark_id" value="<%= a_bookmark.id %>">
-              <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
-              <input type="text" id="name_box" name="query_name" class="form-control bg-dark text-white" placeholder="Add a tag...">             
-              <button type="submit" class="btn btn-primary">Add tag</button>
-            </form>
-            </td>
-            <td><a href="/bookmarks/<%= a_bookmark.id %>"><button class="btn btn-success">Show details</button></a></td>
-            <td><a href="/delete_bookmark/<%= a_bookmark.id %>"><button class="btn btn-danger">Delete bookmark</button></a></td>
+            <th scope="col">FEN</th>
+            <th scope="col">Pieces</th>
+            <%# <th scope="col">Bookmarked at</th> %>
+            <th scope="col">Tags</th>
+            <th scope="col">Add tag</th>
+            <th scope="col">Delete bookmark</th>
+            <th scope="col">Show details</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @list_of_bookmarks.each do |a_bookmark| %>
+            <tr>
+              <td><%= a_bookmark.position.fen %></td>
+              <td><%= a_bookmark.position.pieces %></td>
+              <!-- <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td> -->
+              <td>
+                <% a_bookmark.tags.each do |a_tag| %>
+                  <a href="/tags/<%= a_tag.id %>" class="badge badge-pill badge-light"><%= a_tag.name %></span>
+                <% end %>
+              </td>
+              <td>
+              <form class="form-inline" action="/insert_tag" method="post">
+                <input type="hidden" id="bookmark_box" name="query_bookmark_id" value="<%= a_bookmark.id %>">
+                <input type="hidden" id="user_box" name="query_user_id" value="<%= @current_user.id %>">
+                <input type="text" id="name_box" name="query_name" class="form-control bg-dark text-white" placeholder="Add a tag...">             
+                <button type="submit" class="btn btn-primary">Add tag <i class="fas fa-tag"></i></button>
+              </form>
+              </td>
+              <td class="text-center"><a href="/delete_bookmark/<%= a_bookmark.id %>"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+              <td class="text-center"><a href="/bookmarks/<%= a_bookmark.id %>"><button class="btn btn-success"><i class="fas fa-arrow-right"></i></button></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<hr>
+  <hr>
 
 </div>

@@ -45,8 +45,8 @@
           <th scope="col">Pieces</th>
           <%# <th scope="col">Created at</th>
           <th scope="col">Updated at</th> %>
-          <th scope="col"></th>
-          <th scope="col"></th>
+          <th scope="col">Bookmark position</th>
+          <th scope="col">Show details</th>
         </tr>
       </thead>
       <tbody>
@@ -65,18 +65,18 @@
               <input type="hidden" id="position_box" name="query_position_id" value="<%= a_position.id %>">
               <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
               <input type="hidden" id="tag_box" name="query_tag_id" value="Untagged">             
-              <button type="submit" class="btn btn-primary mb-3">Bookmark position</button>
+              <button type="submit" class="btn btn-primary mb-3">Bookmark position <i class="fas fa-bookmark"></i></button>
             </form>
             <% else %>
             <form action="/insert_bookmark" method="post">
               <input type="hidden" id="position_box" name="query_position_id" value="<%= a_position.id %>">
               <input type="hidden" id="user_box" name="query_user_id" value=<%= @current_user.id %>>
               <input type="hidden" id="tag_box" name="query_tag_id" value="Untagged">             
-              <button type="submit" class="btn btn-outline-primary mb-3" disabled>Position bookmarked</button>
+              <button type="submit" class="btn btn-outline-primary mb-3" disabled>Position bookmarked <i class="fas fa-bookmark"></i> </button>
             </form>
             <% end %>
           </td>
-          <td><a href="/positions/<%= a_position.id %>"><button class="btn btn-success">Show details</button></a></td>
+          <td><a href="/positions/<%= a_position.id %>"><button class="btn btn-success">Show details <i class="fas fa-arrow-right"></i></button></a></td>
         </tr>
       <% end %>
     </table>
