@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Routes for the Tag resource:
   post("/insert_tag", { :controller => "tags", :action => "create" })
-  get("/tags", { :controller => "tags", :action => "index" })
+  # get("/tags", { :controller => "tags", :action => "index" })
   get("/tags/:path_id", { :controller => "tags", :action => "show" })
   post("/modify_tag/:path_id", { :controller => "tags", :action => "update" })
   get("/delete_tag/:path_id", { :controller => "tags", :action => "destroy" })

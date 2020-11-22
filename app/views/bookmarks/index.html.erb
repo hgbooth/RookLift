@@ -81,7 +81,7 @@
               <!-- <td><%= time_ago_in_words(a_bookmark.created_at) %> ago</td> -->
               <td>
                 <% a_bookmark.tags.each do |a_tag| %>
-                  <a href="/tags/<%= a_tag.id %>" class="badge badge-pill badge-light"><%= a_tag.name %></span>
+                  <a href="/tags/<%= a_tag.name %>" class="badge badge-pill badge-light"><%= a_tag.name %></span>
                 <% end %>
               </td>
               <td>

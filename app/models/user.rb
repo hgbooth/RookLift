@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :email, :presence => true
   has_secure_password
   
-  validates :username, :uniqueness => { :case_sensitive => false }
   validates :username, :presence => true
 
   has_many(:bookmarks, { class_name: "Bookmark", foreign_key: "user_id", dependent: :destroy })

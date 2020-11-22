@@ -11,7 +11,7 @@
 #
 class Bookmark < ApplicationRecord
   
-  validates :position_id, :uniqueness => { :case_sensitive => false }
+  validates :position_id, :uniqueness => { :case_sensitive => false, :scope => :user_id }
   validates :position_id, :presence => true
   validates :user_id, :presence => true
   
