@@ -19,14 +19,33 @@ class TrainController < ApplicationController
     param_keys = params.keys
     num_params = param_keys.count()
 
-    @playlist_tags = param_keys[0..num_params-3] # last two params are controller and action, all preceding params are tags
+    if num_params == 2 # controller and action are only keys in params, need to throw error
 
-    render({template: "/trainer/test.html.erb"})  
+      redirect_to("/", { :alert => "You must select at least one tag in order to train"})
+    
+    else # there are tags selected
+      
+      playlist_tags = param_keys[0..num_params-3] # last two params are controller and action, all preceding params are tags
+      cookies.store(:playlist_tags, playlist_tags)
+
+      redirect_to("/trainRandom")
+
+    end
+    
   end
 
   def trainPosition
+    @playlistTags = cookies.fetch(:playlist_tags).split("&") # all tags in playlist, stored as names in array in cookies
 
+    @playlistPositions = []
+    Tag.where({ user_id: @current_user.id, name: @playlistTags}).each do |a_tag|
+      @playlistPositions.push(a_tag.bookmark.position.fen)
+    end
 
+    @curPosition = Position.where({ fen: @playlistPositions.sample() }).first
+    
+    
+    render({template: "/trainer/playlistPosition.html.erb"})  
 
   end
 

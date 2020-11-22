@@ -17,5 +17,4 @@ class Tag < ApplicationRecord
 
   belongs_to(:bookmark, { required: false, class_name: "Bookmark", foreign_key: "bookmark_id" })
   belongs_to(:user, { required: false, class_name: "User", foreign_key: "user_id" })
-  has_many(:bookmarks, { class_name: "Bookmark", foreign_key: "tag_id", dependent: :destroy })
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get("/", {controller: "train", action: "homepage"})
   get("/trainer", {controller: "train", action: "trainerStart"})
-  get("/trainer/:path_id", {controller: "train", action: "trainPosition"})
+  get("/trainRandom", {controller: "train", action: "trainPosition"})
 
   # Routes for the Tag resource:
   post("/insert_tag", { :controller => "tags", :action => "create" })
