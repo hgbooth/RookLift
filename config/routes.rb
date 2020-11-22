@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get("/", {controller: "application", action: "homepage"})
+  get("/", {controller: "train", action: "homepage"})
+  get("/trainer", {controller: "train", action: "trainerStart"})
 
   # Routes for the Tag resource:
   post("/insert_tag", { :controller => "tags", :action => "create" })

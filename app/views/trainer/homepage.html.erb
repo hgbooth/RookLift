@@ -1,0 +1,43 @@
+<div class = "container-fluid">
+  <div class = "row">
+    <div class = "col-md-10 offset-1 text-white rounded text-center font-weight-bold mb-3">
+      <h1>Endgame trainer</h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center mb-3">
+      <a href="/bookmarks" class="btn btn-secondary btn-block mt-3 mb-3 font-weight-bold">
+          Manage your endgame collection
+      </a>
+    </div>
+
+  </div>
+
+  <div class = "row">
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center">
+      <div class = "text-left mb-3 mt-3">
+        <h5>Use the checkboxes below to select the endgames you want to include in your training set</h5>
+      </div>
+      
+      <form action = "/trainer">
+        <% @users_tag_names.each do |a_name|%>
+          <div class="form-check text-left">
+            <input class="form-check-input" type="checkbox" value="" id="query_<%= a_name %>" name = "<%= a_name %>">
+            <label class="form-check-label" for="<%= a_name %>">
+              <%= a_name %>
+            </label>
+          </div>
+        <% end %>
+
+        <button class="btn btn-primary btn-block mt-3 mb-3 font-weight-bold">
+          Train!
+        </button>
+
+      </form>
+
+
+    </div>
+  </div>
+</div>
