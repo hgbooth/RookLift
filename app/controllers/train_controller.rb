@@ -16,6 +16,15 @@ class TrainController < ApplicationController
   end
 
   def trainerStart
+    param_keys = params.keys
+    num_params = param_keys.count()
+
+    @playlist_tags = param_keys[0..num_params-3] # last two params are controller and action, all preceding params are tags
+
+    render({template: "/trainer/test.html.erb"})  
+  end
+
+  def trainPosition
 
 
 
