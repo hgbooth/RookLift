@@ -5,20 +5,28 @@
     </div>
   </div>
 
-  <div class="row">
-
-    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center mb-3">
-      <a href="/bookmarks" class="btn btn-secondary btn-block mt-3 mb-3 font-weight-bold">
-          Manage your endgame collection
-      </a>
+  <div class="row mb-3">
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center">
+      <div class = "text-left mb-3 mt-3">
+        <h3>Welcome to the RookLift endgame trainer!</h3>
+        <p>This trainer will build a custom playlist of positions for you to train your chess endgames. To get started:</p>
+        <ul>
+          <li>Browse our library of endgame positions. You can also add endgames that you want to practice using their FEN</li>
+          <li>If you see an interesting position that you'd like to practice, bookmark it! This will create a library of bookmarked positions for you that you can manage</li>
+          <li>Make a "playlist" of bookmarked endgames that you want to practice by "tagging" the bookmarked position (e.g., a tag could be "rook and pawn vs rook")</li>
+          <li>Once you have made one or more tags, you can make train your endgames by playing a random position from one or more tags against the computer on lichess.com!</li>
+        </ul>
+      </div>
     </div>
-
   </div>
+
+
+  <% if @users_tag_names.count() > 0 %>
 
   <div class = "row">
     <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center">
       <div class = "text-left mb-3 mt-3">
-        <h5>Use the checkboxes below to select the endgames you want to include in your training set</h5>
+        <h5>Use the checkboxes below to select the endgame tags you want to include in your training set</h5>
       </div>
       
       <form action = "/trainer">
@@ -40,4 +48,21 @@
 
     </div>
   </div>
+
+  <% else %>
+
+  <div class="row">
+    <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center">
+      <div class = "text-left mb-3 mt-3">
+        <h5>It looks like you don't have any tagged positions to train. Try browsing our endgame library, bookmarking positions that you want to practice, and tagging them. You can then make a training playlist of all positions in one or more of your tags!</h5>
+      </div>
+      <div class = "col-md-10 offset-1 text-white bg-dark rounded text-center mb-3">
+        <a href="/positions" class="btn btn-primary btn-block mt-3 mb-3 font-weight-bold">
+            Browse endgames
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
 </div>
