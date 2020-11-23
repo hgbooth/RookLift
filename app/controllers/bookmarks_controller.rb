@@ -154,7 +154,7 @@ class BookmarksController < ApplicationController
 
     if the_bookmark.valid?
       the_bookmark.save
-      redirect_to("/bookmarks", { :notice => "Bookmark created successfully." })
+      redirect_to("/positions", { :notice => "Bookmark created successfully." })
     else
       redirect_to("/bookmarks", { :alert => the_bookmark.errors.full_messages.to_sentence })
     end
