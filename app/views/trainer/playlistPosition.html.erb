@@ -27,7 +27,7 @@
       <p><%= @curPosition.fen%></p>
       
       <hr class="border-white">
-
+      <a href="/trainRandom"><button class="btn btn-primary text-white mb-3">Train another position</button></a>
       <div><a href="/"><button class="btn btn-success text-white">Return to homepage</button></a></div>
     </div>
 
@@ -44,10 +44,18 @@
                 <% end %>
               </td>
             <% end %>
-          <% end %>
-        </table>
-      </div>
+          </tr>
+        <% end %>
+      </table>
     </div>
+    
+
+    <div class="col-md-2 offset-1 background-color-black my-auto">
+      <a href="/"><button class="btn btn-danger btn-block text-white">Practice against the computer!</button></a>
+
+    </div>
+
+
     <hr>
   </div>
 </div>
