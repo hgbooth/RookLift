@@ -1,22 +1,53 @@
-
-<% @playlistTags.each do |v| %>
-  <div class="text-white">
-    <%= v %>
+<div class="container-fluid">
+  <div>
+    <div>
+      <h1 class="text-white text-center">
+        Practice position
+      </h1>
+    </div>
   </div>
+  <hr>
+  <div class = "row">
+    <!-- table of info about the fen -->
+    <div class = "col-md-2 offset-1 text-white bg-dark rounded">
+      <div class = "text-left mb-3 mt-3"></div>
+      
+      <h3>Tags in playlist</h3>
+      <ul>
+        <% @playlistTags.each do |v| %>
+          <div class="text-white">
+            <li><%= v %></li>
+          </div>
+        <% end %>
+      </ul>
+      
+      <hr class="border-white">
+      
+      <h3>Current position:</h3>
+      <p><%= @curPosition.fen%></p>
+      
+      <hr class="border-white">
 
-<% end %>
+      <div><a href="/"><button class="btn btn-success text-white">Return to homepage</button></a></div>
+    </div>
 
-<div>
-</div>
 
-<% @playlistPositions.each do |v| %>
-  <div class="text-white">
-    <%= v %>
+    <div class="col-md-4 offset-1">
+      <table class="chessboard">
+        <% (0..7).each do |i| %>
+          <tr class="chessboard">
+            <% (0..7).each do |j| %>
+              <td class="chessboard">
+                <%# if rook render rook, etc. %>
+                <% if @the_board[i][j] != "blank" %>
+                  <img src="<%= @the_images[i][j] %>" class="piece">
+                <% end %>
+              </td>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <hr>
   </div>
-
-<% end %>
-
-<div>
 </div>
-
-<h1 class="text-white"><%= @curPosition.fen%>

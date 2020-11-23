@@ -43,6 +43,16 @@ class TrainController < ApplicationController
     end
 
     @curPosition = Position.where({ fen: @playlistPositions.sample() }).first
+
+    @the_board = parseFen(@curPosition.fen)
+    
+    @the_images = []
+    (0..7).each do |i|
+      @the_images = @the_images.push([])
+      (0..7).each do |j|
+        @the_images[i] = @the_images[i].push(pieceToImg(@the_board[i][j]))
+      end
+    end
     
     
     render({template: "/trainer/playlistPosition.html.erb"})  

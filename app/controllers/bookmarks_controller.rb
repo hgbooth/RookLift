@@ -17,8 +17,6 @@ class BookmarksController < ApplicationController
 
     @the_position = matching_positions.at(0)
     @the_board = parseFen(@the_position.fen)
-
-    @url = pieceToImg(@the_board[0][3])
     
     @the_images = []
     (0..7).each do |i|
