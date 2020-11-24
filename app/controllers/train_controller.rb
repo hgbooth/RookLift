@@ -59,6 +59,21 @@ class TrainController < ApplicationController
 
   end
 
+  def playAI
+
+    curFEN = "8/1k6/1p6/r7/8/3K4/2Q5/8 w - - 0 1"
+
+    response = HTTParty.post('https://lichess.org/api/challenge/ai', {
+      headers: {"Authorization" => "Bearer " + ENV.fetch("LICHESS_API_TOKEN")},
+      body: {"level" => 8}
+    })
+
+    # redirect_to(#lichess)
+    render({plain: response}) 
+  end
+
+
+
 
 
 end
