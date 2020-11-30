@@ -70,3 +70,8 @@ tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
   width: 70px;
   height: 70px;
 }
+
+.black-background {
+  background-color: black;
+
+}

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get("/", {controller: "train", action: "homepage"})
   get("/trainer", {controller: "train", action: "trainerStart"})
   get("/trainRandom", {controller: "train", action: "trainPosition"})
-  get("/playComputer", {controller: "train", action: "playAI"})
+  get("/playComputerWhite", {controller: "train", action: "playAIWhite"})
+  get("/playComputerBlack", {controller: "train", action: "playAIBlack"})
 
   # Routes for the Tag resource:
   post("/insert_tag", { :controller => "tags", :action => "create" })

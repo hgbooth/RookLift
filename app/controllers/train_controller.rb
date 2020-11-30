@@ -59,7 +59,7 @@ class TrainController < ApplicationController
 
   end
 
-  def playAI
+  def playAIWhite
 
     curFEN = "8/1k6/1p6/r7/8/3K4/2Q5/8 w - - 0 1"
 
