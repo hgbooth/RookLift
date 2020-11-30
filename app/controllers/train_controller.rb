@@ -86,7 +86,4 @@ class TrainController < ApplicationController
   end
 
 
-
-
-
 end

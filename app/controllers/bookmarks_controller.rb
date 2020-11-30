@@ -1,9 +1,35 @@
 class BookmarksController < ApplicationController
+  
   def index
     matching_bookmarks = Bookmark.all
 
     # @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
-    @list_of_bookmarks = @current_user.bookmarks.all.order({ :created_at => :desc })
+    matchingList = @current_user.bookmarks.all.order({ :created_at => :desc })
+       
+    @list_of_bookmarks =  []
+
+    matchingList.each do |a_bookmark|
+      curRow = {}
+      curRow["fen"] = a_bookmark.position.fen
+      curRow["pieces"] = a_bookmark.position.pieces
+      curRow["tags"] = a_bookmark.tags
+      curRow["id"] = a_bookmark.id
+
+      the_board = parseFen(a_bookmark.position.fen)
+    
+      the_images = []
+      (0..7).each do |i|
+        the_images = the_images.push([])
+        (0..7).each do |j|
+          the_images[i] = the_images[i].push(pieceToImg(the_board[i][j]))
+        end
+      end
+
+      curRow["the_board"] = the_board
+      curRow["the_images"] = the_images
+
+      @list_of_bookmarks.push(curRow)
+    end
 
 
     render({ :template => "bookmarks/index.html.erb" })

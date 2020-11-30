@@ -49,6 +49,7 @@ table.chessboard {
 td.chessboard {
     width: 70px; 
     height: 70px;
+    padding: 0%;
     /* border: 2px solid #d2a479;  */
 
     /* width: 12.5%;
@@ -69,6 +70,41 @@ tr.chessboard:nth-child(even) td.chessboard:nth-child(odd) {
   
   width: 70px;
   height: 70px;
+}
+
+table.chessboardSmall {
+    /* margin: 80px auto; */
+    background: #F5DEB3;
+    /* border: 25px solid #333;
+    border-collapse: collapse;  */
+
+    width: 100%;
+    padding-bottom: 100%; 
+}
+td.chessboardSmall {
+    width: 20px; 
+    height: 20px;
+    padding: 0%;
+    /* border: 2px solid #d2a479;  */
+
+    /* width: 12.5%;
+    height: 12.5%; */
+}
+
+tr.chessboardSmall:nth-child(odd) td.chessboardSmall:nth-child(even),
+tr.chessboardSmall:nth-child(even) td.chessboardSmall:nth-child(odd) {
+    background: #996633;
+}
+
+.pieceSmall {
+  /* src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1024px-Chess_rdt45.svg.png"; */
+
+  position: relative;
+  top: 0px;
+  left: 0px;
+  
+  width: 20px;
+  height: 20px;
 }
 
 .black-background {
