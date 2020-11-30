@@ -61,15 +61,28 @@ class TrainController < ApplicationController
 
   def playAIWhite
 
-    curFEN = "8/1k6/1p6/r7/8/3K4/2Q5/8 w - - 0 1"
+    curFEN = params.fetch("query_fen")
 
     response = HTTParty.post('https://lichess.org/api/challenge/ai', {
       headers: {"Authorization" => "Bearer " + ENV.fetch("LICHESS_API_TOKEN")},
-      body: {"level" => 8}
+      body: {"level" => 8, "color" => "white", "fen" => curFEN}
     })
 
-    # redirect_to(#lichess)
-    render({plain: response}) 
+    redirect_to("https://lichess.org/" + response.fetch("id"))
+    # render({plain: response}) 
+  end
+  
+  def playAIBlack
+
+    curFEN = params.fetch("query_fen")
+
+    response = HTTParty.post('https://lichess.org/api/challenge/ai', {
+      headers: {"Authorization" => "Bearer " + ENV.fetch("LICHESS_API_TOKEN")},
+      body: {"level" => 8, "color" => "black", "fen" => curFEN}
+    })
+
+    redirect_to("https://lichess.org/" + response.fetch("id"))
+    # render({plain: response}) 
   end
 
 
