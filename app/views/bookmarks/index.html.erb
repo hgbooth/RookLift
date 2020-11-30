@@ -99,7 +99,7 @@
 
               <!-- <td><%= a_bookmark.fetch("pieces") %></td> -->
               <td>
-                <% a_bookmark.fetch("tags") do |a_tag| %>
+                <% a_bookmark.fetch("tags").each do |a_tag| %>
                   <a href="/tags/<%= a_tag.name %>" class="badge badge-pill badge-light"><%= a_tag.name %></span>
                 <% end %>
               </td>

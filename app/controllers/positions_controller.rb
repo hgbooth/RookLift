@@ -1,8 +1,30 @@
 class PositionsController < ApplicationController
   def index
-    matching_positions = Position.all
+    matching_positions = Position.all.order({ :created_at => :desc })   
+    @list_of_positions = []
 
-    @list_of_positions = matching_positions.order({ :created_at => :desc })
+    matching_positions.each do |a_position|
+      curRow = {}
+      curRow["fen"] = a_position.fen
+      curRow["pieces"] = a_position.pieces
+      curRow["endgame_type"] = a_position.endgame_type
+      curRow["id"] = a_position.id
+
+      the_board = parseFen(a_position.fen)
+
+      the_images = []
+      (0..7).each do |i|
+        the_images = the_images.push([])
+        (0..7).each do |j|
+          the_images[i] = the_images[i].push(pieceToImg(the_board[i][j]))
+        end
+      end
+
+      curRow["the_board"] = the_board
+      curRow["the_images"] = the_images      
+
+      @list_of_positions.push(curRow)
+    end
 
     render({ :template => "positions/index.html.erb" })
   end

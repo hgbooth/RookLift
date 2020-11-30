@@ -13,16 +13,10 @@
   <div class = "row">
     
     <!-- table of info about the fen -->
-    <div class = "col-md-5 offset-1 text-white bg-dark rounded">
+    <div class = "col-md-2 offset-1 text-white bg-dark rounded">
       <div class = "text-left mb-3 mt-3">
         <div>
           <div><a href="/bookmarks"><button class="btn btn-success text-white">Go back</button></a></div>
-
-          <!--<div>
-            <a href="/delete_position/<%= @the_position.id %>">
-              Delete position
-            </a>
-          </div> -->
         </div>
       </div>
 
@@ -74,10 +68,17 @@
         <% end %>
       </table>
     </div>
+
+
+  <div class="col-md-2 offset-1 bg-dark my-auto">
+      <form action="/playComputerWhite" target="_blank">
+        <input type="hidden" id="fen_box" name="query_fen" value="<%= @the_position.fen %>">
+        <button type="submit" class="mt-3 btn bg-white btn-block text-black mb-3">Practice with the white pieces</button>
+      </form>
+      <form action="/playComputerBlack" target="_blank">
+        <input type="hidden" id="fen_box" name="query_fen" value="<%= @the_position.fen %>">
+        <button type="submit" class="btn btn-block black-background text-white border-white mb-3">Practice with the black pieces</button>
+      </form>
+    </div>
   </div>
-
-  <hr>
-
-
-
 </div>
