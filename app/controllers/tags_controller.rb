@@ -10,10 +10,54 @@ class TagsController < ApplicationController
   def show
     @tag_name = params.fetch("path_id")
 
-    @users_matching_tags = Tag.where({ :name => @tag_name, :user_id => @current_user.id })
-    @others_matching_tags = Tag.where({ :name => @tag_name}).where.not({:user_id => @current_user.id })
+    user_tags = Tag.where({ :name => @tag_name, :user_id => @current_user.id })
+    other_tags = Tag.where({ :name => @tag_name}).where.not({:user_id => @current_user.id })
+    
+    @users_matching_tags = []
+    @others_matching_tags = []
 
-    # @the_tag = matching_tags
+    user_tags.each do |a_tag|
+      curRow = {}
+      curRow["id"] = a_tag.id
+      curRow["bookmarkId"] = a_tag.bookmark.id
+
+      the_board = parseFen(a_tag.bookmark.position.fen)
+    
+      the_images = []
+      (0..7).each do |i|
+        the_images = the_images.push([])
+        (0..7).each do |j|
+          the_images[i] = the_images[i].push(pieceToImg(the_board[i][j]))
+        end
+      end
+
+      curRow["the_board"] = the_board
+      curRow["the_images"] = the_images
+
+      @users_matching_tags = @users_matching_tags.push(curRow)
+    end
+
+    
+    other_tags.each do |a_tag|
+      curRow = {}
+      curRow["id"] = a_tag.id
+      curRow["positionId"] = a_tag.bookmark.position.id
+
+      the_board = parseFen(a_tag.bookmark.position.fen)
+    
+      the_images = []
+      (0..7).each do |i|
+        the_images = the_images.push([])
+        (0..7).each do |j|
+          the_images[i] = the_images[i].push(pieceToImg(the_board[i][j]))
+        end
+      end
+
+      curRow["the_board"] = the_board
+      curRow["the_images"] = the_images
+
+      @others_matching_tags = @others_matching_tags.push(curRow)
+    end
 
     render({ :template => "tags/show.html.erb" })
   end
